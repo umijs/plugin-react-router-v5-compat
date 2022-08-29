@@ -1,8 +1,8 @@
 import React from 'react';
-import { history, Link, Outlet } from 'umi';
+import { history, Link } from 'umi';
 
-export default function Layout() {
-  console.log('rerender layout');
+export default function Layout(props: any) {
+  console.log('rerender layout', props);
   return (
     <div>
       <h2>global layout</h2>
@@ -40,7 +40,7 @@ export default function Layout() {
       >
         replace to /about
       </button>
-      <Outlet />
+      {props.children}
     </div>
   );
 }

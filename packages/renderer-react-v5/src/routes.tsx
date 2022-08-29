@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { RouteContext } from './routeContext';
 import { IClientRoute, IRoute, IRoutesById } from './types';
 import type { RouteConfigComponentProps } from 'react-router-config';
+import { Outlet } from './components';
 
 export function createClientRoutes(opts: {
   routesById: IRoutesById;
@@ -11,6 +12,7 @@ export function createClientRoutes(opts: {
   loadingComponent?: React.ReactNode;
 }) {
   const { routesById, parentId, routeComponents } = opts;
+
   return Object.keys(routesById)
     .filter((id) => routesById[id].parentId === parentId)
     .map((id) => {
@@ -19,6 +21,7 @@ export function createClientRoutes(opts: {
         routeComponent: routeComponents[id],
         loadingComponent: opts.loadingComponent,
       });
+
       const children = createClientRoutes({
         routesById,
         routeComponents,
@@ -80,9 +83,12 @@ function RemoteComponent(props: any) {
   const useSuspense = true;
   if (useSuspense) {
     const Component = props.loader;
+    const { route } = props;
     return (
       <React.Suspense fallback={<props.loadingComponent />}>
-        <Component {...props.route} />
+        <Component {...route}>
+          {Array.isArray(route.route?.routes) ? <Outlet /> : null}
+        </Component>
       </React.Suspense>
     );
   } else {
