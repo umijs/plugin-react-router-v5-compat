@@ -1,0 +1,24 @@
+{
+  "name": "@umijs/plugin-react-router-v5-compat",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "pnpm father build",
+    "dev": "pnpm father dev"
+  },
+  "dependencies": {
+    "@umijs/renderer-react-v5": "workspace:*",
+    "history": "4.10.1",
+    "react-router": "5.3.3",
+    "react-router-config": "5.1.1",
+    "react-router-dom": "5.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
