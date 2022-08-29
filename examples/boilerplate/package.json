@@ -1,0 +1,19 @@
+{
+  "name": "@example/boilerplate",
+  "private": true,
+  "scripts": {
+    "build": "umi build",
+    "dev": "umi dev",
+    "preview": "umi preview",
+    "setup": "umi setup",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "@umijs/plugin-react-router-v5-compat": "workspace:*",
+    "umi": "4.0.0-canary.20220826.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.5"
+  }
+}
